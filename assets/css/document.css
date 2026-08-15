@@ -66,12 +66,29 @@ a:hover { color: var(--ink); }
   max-width: var(--measure);
 }
 
-/* On wide screens the datum rail lives in the left gutter. */
+/* On wide screens the datum rail lives in the left gutter. It spans every row
+   of the section so it can travel with the reader; a rail pinned to the first
+   row would only be visible for the first paragraph. Row gap stays at zero —
+   the blocks carry their own margins, and a grid gap would double them. */
 @media (min-width: 60rem) {
-  .doc > section { display: grid; grid-template-columns: var(--rail-w) 1fr; gap: var(--gutter); }
-  .doc > section > .rail-slot { grid-column: 1; }
+  .doc > section {
+    display: grid;
+    grid-template-columns: var(--rail-w) minmax(0, 1fr);
+    column-gap: var(--gutter);
+    row-gap: 0;
+  }
+  .doc > section > .rail-slot { grid-column: 1; grid-row: 1 / -1; }
   .doc > section > *:not(.rail-slot) { grid-column: 2; }
 }
+
+/* Hold the measure. Wide content — tables, the drawing — opts out. */
+.doc > section > p,
+.doc > section > h2,
+.doc > section > h3,
+.doc > section > ul,
+.doc > section > ol,
+.doc > section > .aside,
+.doc > section > .thesis { max-width: var(--measure); }
 
 /* --- typography ----------------------------------------------------------- */
 h1, h2, h3 {
