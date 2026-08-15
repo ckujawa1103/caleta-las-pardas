@@ -1,0 +1,8 @@
+.DS_Store
+node_modules/
+*.tgz
+
+# Raw MIPR dumps: large, re-fetchable with tools/geom.py, and never read by the
+# page. Only the derived artifacts are committed.
+data/mipr-geometry.json
+data/mipr-calificacion.json

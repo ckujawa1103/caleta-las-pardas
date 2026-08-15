@@ -1,0 +1,130 @@
+/* ==========================================================================
+   The Guánica Compound — design tokens
+
+   Palette is Guánica's actual arid coast, not tropical-postcard Puerto Rico:
+   bleached limestone, sage-grey thorn scrub, hard white light, deep blue-green
+   water. Closer to Baja than to San Juan.
+   ========================================================================== */
+
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url('../fonts/fraunces-300_700-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url('../fonts/fraunces-300_700-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
+    U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+    U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Karla';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url('../fonts/karla-300_700-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Karla';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url('../fonts/karla-300_700-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
+    U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+    U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/ibm-plex-mono-400-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../fonts/ibm-plex-mono-500-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root {
+  /* --- water and ground ------------------------------------------------- */
+  --abyss: #0b1f26;        /* deep water — page ground, deliberately not black */
+  --shelf: #14343b;        /* darker reef water — panels */
+  --rule: #23474f;         /* hairlines: sits between abyss and shelf */
+  --rule-soft: #1a3b43;
+
+  /* --- light ------------------------------------------------------------ */
+  --reef: #4fb3a8;         /* turquoise over sand — used sparingly */
+  --bone: #e4dfd2;         /* bleached limestone — body text */
+  --bone-dim: #a8ada4;     /* secondary text, captions */
+  --lamp: #e0a857;         /* warm brass lamplight — the underground accent */
+  --scrub: #7c8a6f;        /* dry forest sage — labels, utility */
+  --alarm: #cf7a5c;        /* legal walls and hazards; earthen, not fire-engine */
+
+  /* --- surface tokens: what the page actually paints with ---------------- */
+  --ground: var(--abyss);
+  --panel: var(--shelf);
+  --ink: var(--bone);
+  --ink-dim: var(--bone-dim);
+  --accent: var(--reef);
+  --edge: var(--rule);
+
+  /* --- type ------------------------------------------------------------- */
+  --display: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+  --body: 'Karla', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --tech: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* Fluid scale. Tight at the small end so mono tables survive a phone. */
+  --t--1: clamp(0.75rem, 0.72rem + 0.15vw, 0.82rem);
+  --t-0: clamp(1rem, 0.96rem + 0.2vw, 1.09rem);
+  --t-1: clamp(1.17rem, 1.1rem + 0.35vw, 1.32rem);
+  --t-2: clamp(1.42rem, 1.28rem + 0.7vw, 1.85rem);
+  --t-3: clamp(1.75rem, 1.5rem + 1.25vw, 2.6rem);
+  --t-4: clamp(2.1rem, 1.6rem + 2.5vw, 4rem);
+
+  --measure: 66ch;
+  --gutter: clamp(1.1rem, 4vw, 2.5rem);
+  --rail-w: 6.5rem;
+
+  --step: clamp(2.6rem, 6vw, 4.5rem);   /* vertical rhythm between blocks */
+}
+
+/* The one atmospheric move: underground sections warm from blue-black to
+   lamp-gold on warm dark, mirroring the walk down the tunnel into the club.
+   Implemented as a surface-token swap so every component follows along. */
+[data-depth='under'] {
+  --ground: #17100b;
+  --panel: #241a12;
+  --ink: #ece0cd;
+  --ink-dim: #b3a289;
+  --accent: var(--lamp);
+  --edge: #3a2a1b;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .depth-shift {
+    transition: background-color 900ms ease, color 900ms ease,
+      border-color 900ms ease;
+  }
+}

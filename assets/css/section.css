@@ -1,0 +1,146 @@
+/* ==========================================================================
+   The signature: the section cut
+   ========================================================================== */
+
+.section-figure { margin: 0; }
+
+/* The drawing is 1360 px wide and full of 11 px labels. Shrinking that to a
+   phone makes it unreadable, so on narrow screens it scrolls inside its own
+   container at a legible size rather than being squashed. */
+.section-scroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid var(--edge);
+  background: var(--abyss);
+  scrollbar-color: var(--rule) transparent;
+}
+.section-scroll > svg {
+  display: block;
+  width: 1360px;
+  max-width: none;
+  height: auto;
+}
+@media (min-width: 88rem) {
+  .section-scroll > svg { width: 100%; }
+}
+
+.section-hint {
+  font-family: var(--tech);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--scrub);
+  margin: 0.7rem 0 0;
+}
+@media (min-width: 88rem) { .section-hint { display: none; } }
+
+/* --- svg internals -------------------------------------------------------- */
+#sectioncut text { font-family: var(--tech); fill: var(--bone); }
+.sc-tick { font-size: 10px; fill: #8ba0a3 !important; }
+.sc-axis {
+  font-size: 10px;
+  fill: #7c8a6f !important;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+.sc-band-t {
+  font-size: 10px;
+  fill: #6d8489 !important;
+  letter-spacing: 0.22em;
+}
+.sc-bracket-t { font-size: 11px; fill: #4fb3a8 !important; letter-spacing: 0.03em; }
+.sc-haz-t { font-size: 10px; fill: #cf7a5c !important; letter-spacing: 0.04em; }
+.sc-room-t { font-size: 10.5px; fill: #f0dcb8 !important; letter-spacing: 0.02em; }
+
+.sc-struct-box {
+  fill: #d8d2c2;
+  fill-opacity: 0.82;
+  stroke: #e8e3d6;
+  stroke-width: 0.8;
+}
+.sc-room-box {
+  fill: #2a1c10;
+  stroke: #e0a857;
+  stroke-width: 1.3;
+}
+.sc-room--club .sc-room-box { stroke-width: 2; fill: #3a2512; }
+
+/* interaction */
+.sc-struct, .sc-room, .sc-band, .sc-haz { cursor: pointer; }
+.sc-struct:hover .sc-struct-box,
+.sc-struct[data-active] .sc-struct-box {
+  fill: #4fb3a8;
+  fill-opacity: 1;
+}
+.sc-room:hover .sc-room-box,
+.sc-room[data-active] .sc-room-box {
+  fill: #6b4418;
+  stroke: #ffd08a;
+}
+.sc-band:hover .sc-band-hit,
+.sc-band[data-active] .sc-band-hit { opacity: 0.07 !important; }
+
+.sc-struct:focus-visible, .sc-room:focus-visible, .sc-band:focus-visible {
+  outline: 2px solid var(--reef);
+  outline-offset: 2px;
+}
+
+/* --- the detail panel ----------------------------------------------------- */
+.section-detail {
+  margin-top: 1rem;
+  border: 1px solid var(--edge);
+  border-left: 2px solid var(--reef);
+  background: color-mix(in srgb, var(--shelf) 55%, transparent);
+  padding: 1.1rem 1.25rem;
+  min-height: 8.5rem;
+}
+.section-detail h3 {
+  margin: 0 0 0.5rem;
+  font-family: var(--display);
+  font-size: var(--t-1);
+  font-weight: 520;
+}
+.section-detail p { margin: 0; font-size: 0.95em; }
+.section-detail[data-kind='under'] { border-left-color: var(--lamp); }
+.section-detail[data-kind='hazard'] { border-left-color: var(--alarm); }
+.section-detail .placeholder {
+  color: var(--ink-dim);
+  font-family: var(--tech);
+  font-size: var(--t--1);
+  line-height: 1.6;
+}
+
+/* --- legend --------------------------------------------------------------- */
+.section-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.4rem;
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--tech);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--ink-dim);
+}
+.section-legend li { display: flex; align-items: center; gap: 0.45rem; }
+.section-legend i {
+  width: 14px;
+  height: 3px;
+  flex: none;
+  background: currentColor;
+}
+.lg-dts { color: #4fb3a8; }
+.lg-cr { color: #7c8a6f; }
+.lg-bq { color: #55705e; }
+.lg-vial { color: #8a7f6b; }
+.lg-lamp { color: #e0a857; }
+.lg-haz { color: #cf7a5c; }
+
+/* generated-drawing type roles */
+.sc-note { font-size: 10px; fill: #6f8c90 !important; letter-spacing: 0.1em; text-transform: uppercase; }
+.sc-note-s { font-size: 9px; fill: #547077 !important; letter-spacing: 0.03em; }
+.sc-struct-t { font-size: 10.5px; fill: #dfe3d8 !important; letter-spacing: 0.02em; }
+.sc-room-t--club { fill: #ffd08a !important; font-weight: 500; letter-spacing: 0.09em; }
+.sc-dim-t { font-size: 9.5px; fill: #c99a63 !important; letter-spacing: 0.05em; }

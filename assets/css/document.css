@@ -1,0 +1,292 @@
+/* ==========================================================================
+   The Guánica Compound — document
+   ========================================================================== */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: var(--t-0);
+  font-weight: 350;
+  line-height: 1.62;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection { background: var(--accent); color: var(--abyss); }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { color: var(--ink); }
+
+/* --- skip link ------------------------------------------------------------ */
+.skip {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  background: var(--panel);
+  color: var(--ink);
+  padding: 0.7rem 1.1rem;
+  font-family: var(--tech);
+  font-size: var(--t--1);
+}
+.skip:focus { left: 0.5rem; top: 0.5rem; }
+
+/* --- layout --------------------------------------------------------------- */
+.wrap {
+  max-width: calc(var(--measure) + var(--rail-w) + var(--gutter) * 2);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.doc > section {
+  padding-block: var(--step);
+  border-top: 1px solid var(--edge);
+}
+.doc > section:first-of-type { border-top: 0; }
+
+.col {
+  max-width: var(--measure);
+}
+
+/* On wide screens the datum rail lives in the left gutter. */
+@media (min-width: 60rem) {
+  .doc > section { display: grid; grid-template-columns: var(--rail-w) 1fr; gap: var(--gutter); }
+  .doc > section > .rail-slot { grid-column: 1; }
+  .doc > section > *:not(.rail-slot) { grid-column: 2; }
+}
+
+/* --- typography ----------------------------------------------------------- */
+h1, h2, h3 {
+  font-family: var(--display);
+  font-weight: 460;
+  font-variation-settings: 'SOFT' 0, 'WONK' 0;
+  line-height: 1.08;
+  letter-spacing: -0.012em;
+  text-wrap: balance;
+  margin: 0 0 0.6em;
+}
+h1 { font-size: var(--t-4); font-weight: 420; letter-spacing: -0.022em; }
+h2 { font-size: var(--t-3); margin-top: 0; }
+h3 {
+  font-size: var(--t-1);
+  font-weight: 560;
+  margin-top: 2.2em;
+  letter-spacing: -0.004em;
+}
+
+p { margin: 0 0 1.15em; text-wrap: pretty; }
+p:last-child { margin-bottom: 0; }
+
+strong { font-weight: 620; color: var(--ink); }
+em { font-style: italic; }
+
+/* --- the structural device: elevation datums ------------------------------ */
+/* Vertical position IS the organizing principle of this design, so every
+   section is stamped with the real ground elevation of the program it covers.
+   Figures come from the 3DEP transect, not from invention. */
+.datum {
+  font-family: var(--tech);
+  font-size: var(--t--1);
+  font-weight: 500;
+  color: var(--accent);
+  letter-spacing: 0.04em;
+  display: block;
+  margin-bottom: 0.35rem;
+  font-variant-numeric: tabular-nums;
+}
+.datum-note {
+  font-family: var(--tech);
+  font-size: 0.7rem;
+  color: var(--ink-dim);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  display: block;
+  line-height: 1.4;
+}
+
+/* Mobile: the datum sits inline above the heading rather than in a rail. */
+.rail-slot {
+  position: sticky;
+  top: var(--gutter);
+  align-self: start;
+  padding-bottom: 1.2rem;
+}
+@media (max-width: 59.99rem) {
+  .rail-slot { position: static; padding-bottom: 0.9rem; }
+}
+
+/* --- eyebrow -------------------------------------------------------------- */
+.eyebrow {
+  font-family: var(--tech);
+  font-size: var(--t--1);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--scrub);
+  margin: 0 0 1.1rem;
+}
+[data-depth='under'] .eyebrow { color: #8d7a5e; }
+
+/* --- the thesis: one pull quote, used with restraint ----------------------- */
+.thesis {
+  margin: var(--step) 0;
+  padding-left: clamp(1rem, 3vw, 1.8rem);
+  border-left: 2px solid var(--accent);
+}
+.thesis p {
+  font-family: var(--display);
+  font-size: var(--t-2);
+  font-weight: 380;
+  font-variation-settings: 'SOFT' 20, 'WONK' 1;
+  line-height: 1.24;
+  letter-spacing: -0.012em;
+  color: var(--ink);
+  margin: 0;
+}
+
+/* --- the engineering asides: the good part -------------------------------- */
+.aside {
+  margin: 1.9rem 0;
+  padding: 1.15rem 1.3rem;
+  background: color-mix(in srgb, var(--panel) 62%, transparent);
+  border-left: 2px solid var(--scrub);
+  font-size: 0.95em;
+}
+.aside > :first-child { margin-top: 0; }
+.aside h4 {
+  font-family: var(--tech);
+  font-size: var(--t--1);
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--scrub);
+  margin: 0 0 0.55rem;
+}
+[data-depth='under'] .aside { border-left-color: var(--lamp); }
+[data-depth='under'] .aside h4 { color: var(--lamp); }
+
+/* A legal wall. Never softened, so it gets its own colour. */
+.wall {
+  border-left-color: var(--alarm);
+}
+.wall h4 { color: var(--alarm); }
+
+/* --- tables --------------------------------------------------------------- */
+.tablewrap {
+  overflow-x: auto;
+  margin: 1.9rem 0;
+  border: 1px solid var(--edge);
+  -webkit-overflow-scrolling: touch;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--tech);
+  font-size: var(--t--1);
+  font-variant-numeric: tabular-nums;
+}
+caption {
+  caption-side: top;
+  text-align: left;
+  font-family: var(--tech);
+  font-size: var(--t--1);
+  color: var(--ink-dim);
+  padding: 0.8rem 0.9rem;
+  border-bottom: 1px solid var(--edge);
+  background: color-mix(in srgb, var(--panel) 50%, transparent);
+}
+th, td {
+  padding: 0.6rem 0.9rem;
+  text-align: left;
+  border-bottom: 1px solid var(--rule-soft);
+  vertical-align: top;
+}
+[data-depth='under'] th, [data-depth='under'] td { border-bottom-color: var(--edge); }
+thead th {
+  color: var(--scrub);
+  font-weight: 500;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  white-space: nowrap;
+}
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; white-space: nowrap; }
+tr.total td {
+  border-top: 1px solid var(--accent);
+  color: var(--ink);
+  font-weight: 500;
+}
+tbody tr:hover td { background: color-mix(in srgb, var(--panel) 40%, transparent); }
+
+/* --- lists ---------------------------------------------------------------- */
+.doc ul, .doc ol { padding-left: 1.15rem; margin: 0 0 1.15em; }
+.doc li { margin-bottom: 0.5em; }
+.doc li::marker { color: var(--scrub); }
+
+/* A register of open questions is a numbered list where the number matters. */
+.register { list-style: none; padding-left: 0; counter-reset: q; }
+.register > li {
+  counter-increment: q;
+  display: grid;
+  grid-template-columns: 2.4rem 1fr;
+  gap: 0.4rem 0.9rem;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--rule-soft);
+}
+.register > li::before {
+  content: counter(q, decimal-leading-zero);
+  font-family: var(--tech);
+  font-size: var(--t--1);
+  color: var(--scrub);
+  padding-top: 0.15rem;
+}
+.register .q-status {
+  grid-column: 2;
+  font-family: var(--tech);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.q-open { color: var(--alarm); }
+.q-closed { color: var(--reef); }
+.q-part { color: var(--scrub); }
+
+/* --- figure / caption ------------------------------------------------------ */
+figure { margin: var(--step) 0; }
+figcaption {
+  font-family: var(--tech);
+  font-size: var(--t--1);
+  color: var(--ink-dim);
+  line-height: 1.5;
+  margin-top: 0.9rem;
+  max-width: var(--measure);
+}
+
+/* --- source note ---------------------------------------------------------- */
+.source {
+  font-family: var(--tech);
+  font-size: 0.72rem;
+  color: var(--ink-dim);
+  letter-spacing: 0.02em;
+  line-height: 1.55;
+}
+.source a { color: var(--ink-dim); }
+.source a:hover { color: var(--accent); }

@@ -1,0 +1,84 @@
+/* ==========================================================================
+   Hero — the thesis, not a stat block
+   ========================================================================== */
+
+.hero {
+  position: relative;
+  border-bottom: 1px solid var(--edge);
+  overflow: hidden;
+}
+
+/* A single quiet gradient standing in for the water the site looks at. */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 62%;
+  background: linear-gradient(to top,
+    color-mix(in srgb, #14343b 70%, transparent), transparent);
+  pointer-events: none;
+}
+
+.hero-inner {
+  position: relative;
+  padding-block: clamp(3.5rem, 12vh, 8rem) clamp(2.5rem, 8vh, 5rem);
+}
+
+.hero-eyebrow {
+  font-family: var(--tech);
+  font-size: var(--t--1);
+  letter-spacing: 0.1em;
+  color: var(--scrub);
+  margin: 0 0 clamp(1.2rem, 4vh, 2.4rem);
+}
+
+.hero-title {
+  font-family: var(--display);
+  font-size: var(--t-4);
+  font-weight: 380;
+  font-variation-settings: 'SOFT' 30, 'WONK' 1;
+  line-height: 0.94;
+  letter-spacing: -0.03em;
+  margin: 0 0 clamp(1.1rem, 3vh, 1.9rem);
+  color: var(--bone);
+}
+
+.hero-sub {
+  max-width: 52ch;
+  font-size: var(--t-1);
+  font-weight: 320;
+  line-height: 1.5;
+  color: var(--ink-dim);
+  margin: 0 0 clamp(2rem, 6vh, 3.4rem);
+}
+
+.hero-facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+  gap: 1.1rem 2rem;
+  margin: 0;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--edge);
+  max-width: var(--measure);
+}
+.hero-facts div { margin: 0; }
+.hero-facts dt {
+  font-family: var(--tech);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--scrub);
+  margin-bottom: 0.3rem;
+}
+.hero-facts dd {
+  margin: 0;
+  font-family: var(--tech);
+  font-size: var(--t-0);
+  color: var(--reef);
+  font-variant-numeric: tabular-nums;
+}
+
+.site-foot {
+  padding-block: var(--step);
+  border-top: 1px solid var(--edge);
+}
