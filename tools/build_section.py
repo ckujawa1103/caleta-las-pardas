@@ -39,43 +39,43 @@ def esc(s):
 # ---- programme ------------------------------------------------------------
 # (d0, d1, height_m, id, short label, full label, detail)
 SURFACE = [
-    (8, 30, 2.6, 'palapa', 'Palapa', 'Palapa & fire pit',
+    (60, 82, 2.6, 'palapa', 'Palapa', 'Palapa & fire pit',
      'Open palapa, fire pit, outdoor shower, boat ramp and davit. Expendable by '
      'design — nothing buried here but re-pullable conduit. On this parcel it '
      'also sits on land zoned CR, seaward of the road, which the design has to '
      'reckon with.'),
-    (30, 42, 1.8, 'berm', 'Berm', 'Sea grape berm',
+    (44, 56, 2.4, 'berm', 'Berm', 'Sea grape berm',
      'Landscape, privacy screen and genuine wave-energy dissipator at once. '
      'Privacy here has to be architectural — elevation, berm and building mass — '
      'because the shoreline itself is public domain and people may legally walk it.'),
-    (56, 74, 6.5, 'casita', 'Casita', 'Guest casita',
+    (90, 108, 6.5, 'casita', 'Casita', 'Guest casita',
      'On its own lot, for genuine separation. Reached from the main house by a '
      '200 ft tunnel run, which is how a guest ends up walking the gallery after '
      'dinner and deciding it is the best part of the property.'),
-    (100, 124, 13.0, 'house', 'Main house', 'Main house — 4,500 sq ft',
+    (118, 144, 13.0, 'house', 'Main house', 'Main house — 4,500 sq ft',
      'Long axis east–west so the two big faces look north and south, and the '
      'building pierced so the easterly trades blow straight through. Ground '
      'level is sacrificial: carport, boat storage, outdoor kitchen, breezeway. '
      'Living space starts on a concrete deck 12–15 ft up. Roof terrace doubles '
      'as vertical evacuation refuge.'),
-    (128, 146, 1.2, 'pool', 'Pool', 'Pool',
+    (150, 170, 1.2, 'pool', 'Pool', 'Pool',
      'Behind the house, so building mass screens it from the public shoreline. '
      'Saltwater chlorination, no heating — you will never once want warmer '
      'water. Quietly infrastructure: thermal mass, fire reserve, and ~20,000 '
      'gallons of flushing water after a storm.'),
-    (158, 182, 5.5, 'workshop', 'Workshop', 'Workshop & boathouse',
+    (194, 218, 5.5, 'workshop', 'Workshop', 'Workshop & boathouse',
      'Band C surface. The concealed panel into the armory is in this wall, and '
      'the shelter entry is at the back of it.'),
-    (188, 208, 1.0, 'cistern', 'Cisterns', 'Cistern field & utility vault',
+    (226, 242, 1.0, 'cistern', 'Cisterns', 'Cistern field & utility vault',
      '50,000 gallons of buried concrete cistern under the terrace, sized to '
      'carry Christmas to May. Guánica is the driest place in Puerto Rico, so '
      'water is the genuinely hard problem here — not power.'),
-    (214, 246, 1.6, 'solar', 'Array', 'Ground solar array',
+    (250, 276, 1.6, 'solar', 'Array', 'Ground solar array',
      'One of five separate subarrays, each on its own MPPT. The splitting is '
      'the point: a hurricane that takes one does not take the system. Fixed, '
      'low-tilt, mechanically fastened through to concrete, never ballasted — '
      'and never a tracker, because a tracker in hurricane country is a sail.'),
-    (256, 292, 0.6, 'helipad', 'Helipad', 'Helipad — 40×40 TLOF',
+    (292, 326, 0.6, 'helipad', 'Helipad', 'Helipad — 40×40 TLOF',
      'Set back from the bluff edge, because easterly trades rolling over a '
      'bluff face make mechanical turbulence exactly where an approach ends. '
      'Sized for a twin so charter operators can use it. Rotor downwash would '
@@ -84,31 +84,31 @@ SURFACE = [
 
 # (d0, d1, drop_below_grade, height_m, id, short, full, detail, kind)
 BURIED = [
-    (150, 176, 4.2, 3.4, 'shelter', 'Shelter', 'The shelter',
+    (192, 216, 4.2, 3.4, 'shelter', 'Shelter', 'The shelter',
      'Eight bunks, galley, air plant, stores, comms, Faraday cage. Designed '
      'like a small hotel rather than a submarine: daylight tubes, real '
      'ventilation, separate spaces. The binding constraints on thirty days '
      'sealed in are filter media and morale — not power, water or food.', 'room'),
-    (180, 194, 3.8, 2.8, 'armory', 'Armory', 'The armory',
+    (220, 232, 3.8, 2.8, 'armory', 'Armory', 'The armory',
      'Deliberately not inside the shelter — you do not want a magazine in the '
      'room you are sealed into for a month. The dominant design problem is '
      'salt, not burglary: 35–45% RH held steady, desiccant backup that works '
      'at zero watts, open racks and never soft cases.', 'room'),
-    (198, 212, 3.8, 2.8, 'clinic', 'Clinic', 'The clinic',
+    (236, 248, 3.8, 2.8, 'clinic', 'Clinic', 'The clinic',
      'Shares a wall with the shelter so it is reachable fully sealed, and '
      'shares the shelter air plant. The equipment is the easy part; the licence '
      'to use it is not. A retained medical director with 24/7 telemedicine is '
      'what converts a room of expensive props into an actual clinic.', 'room'),
-    (218, 254, 5.0, 4.2, 'club', 'THE CLUB', 'The Club — 4,500 sq ft',
+    (252, 282, 5.0, 4.2, 'club', 'THE CLUB', 'The Club — 4,500 sq ft',
      'Two synthetic lanes with string pinsetters, a games hall, the bar at the '
      'junction so it serves both, kitchen and lounge. All-electric, because '
      'propane is heavier than air and a leak in a buried room pools on the '
      'floor and waits. On a 300 kWh bank it runs right through a lockdown. The '
      'bunks are where you sleep for a month; this is where you actually live.',
      'club'),
-    (262, 300, 5.5, 3.2, 'range', 'Range 50 m', 'The range — 50 m, two lanes',
-     'Runs perpendicular to this section, so it is drawn foreshortened. '
-     'Granulated rubber backstop, laminar downrange airflow, HEPA exhaust. At '
+    (258, 274, 10.4, 3.2, 'range', 'Range \u22a5', 'The range — 50 m, two lanes',
+     'Cut across, not along: the 50 m run goes perpendicular to this section, out across the width of the parcel, so what you see here is a section through its two lanes. '
+     'It is cut deeper than the rest of the gallery on purpose: more rock overhead is the cheapest sound isolation there is, and the excavation is already open. Granulated rubber backstop, laminar downrange airflow, HEPA exhaust. At '
      '15–25 kW while running it is the single largest load on the compound — '
      'and the one thing that cannot operate in lockdown.', 'room'),
 ]
@@ -282,17 +282,24 @@ def main():
       f'+{ground_at(prof, dts_d1):.1f} m</text>')
     a('</g>')
 
-    bands = [('A', -6, 44, 'Band A — the paradise',
-              'Everything here is expendable by design. On the real parcel this '
-              'strip is zoned CR and sits seaward of the public road, so it is '
-              'the one band the design cannot assume it owns.'),
-             ('B', 44, 150, 'Band B — the house',
-              'Elevated, hardened, comfortable. Ground level open and '
-              'sacrificial; living space above it on a concrete deck.'),
-             ('C', 150, 310, 'Band C — the fortress',
-              'Utilities, stores, and everything buried. Eight acres is what '
-              'lets the septic drip field, the range and the helipad all fit '
-              'without fighting each other.')]
+    bands = [('0', -6, 44, 'The public strip',
+               'Conservation zoning, the maritime-terrestrial zone and the road, '
+               'in that order. Not the parcel. The compound looks across it to '
+               'the water and builds nothing on it — which is also why the boat '
+               'lives in Guánica Bay rather than on a ramp below the house.'),
+              ('A', 44, 100, 'Band A — the terrace',
+               'The parcel starts here, at +7.2 m, behind the road. This is the '
+               'outdoor room: palapa, fire pit, pool, the long view south over '
+               'the reef flats. Expendable by design, and now expendable to '
+               'wind rather than to water.'),
+              ('B', 100, 190, 'Band B — the house',
+               'Elevated, hardened, comfortable, +9 m to +18 m. Ground level '
+               'open and sacrificial; living space above it on a concrete deck.'),
+              ('C', 190, 284, 'Band C — the fortress',
+               'Utilities, stores, and everything buried, climbing to +26 m at '
+               'the back boundary. Nearly eight acres is what lets the septic '
+               'drip field, the range and the helipad all fit without fighting '
+               'each other.')]
     for code, d0, d1, name, detail in bands:
         x0, x1 = px(d0), px(d1)
         a(f'<g class="sc-band" data-id="band{code}" tabindex="0" role="button" '
@@ -328,7 +335,7 @@ def main():
         a('</g>')
 
     # --- the gallery --------------------------------------------------------
-    gal = [(px(d), py(ground_at(prof, d) - 3.4)) for d in range(100, 312, 4)]
+    gal = [(px(d), py(ground_at(prof, d) - 3.4)) for d in range(130, 300, 4)]
     gal_d = ' '.join(f'{x:.1f},{y:.1f}' for x, y in gal)
     a('<g class="sc-gallery">')
     a(f'<polyline points="{gal_d}" fill="none" stroke="#e0a857" '
@@ -338,9 +345,9 @@ def main():
     a('</g>')
 
     # sally port: descends from the house, daylights through the bluff face
-    sp = [(px(d), py(max(2.0, min(ground_at(prof, 100) - 3.4,
+    sp = [(px(d), py(max(3.0, min(ground_at(prof, 130) - 3.4,
                                   ground_at(prof, d) - 1.4))))
-          for d in range(100, 6, -4)]
+          for d in range(130, 42, -4)]
     sp_d = ' '.join(f'{x:.1f},{y:.1f}' for x, y in sp)
     a('<g class="sc-room" data-id="sallyport" tabindex="0" role="button" '
       'aria-label="Sea sally port">')
@@ -385,7 +392,7 @@ def main():
         a('</g>')
 
     # the walk: the distance is the point, so it gets a dimension line
-    wx0, wx1 = px(118), px(220)
+    wx0, wx1 = px(131), px(267)
     wy = max(b[3] for b in boxes) + 15 + (max(lanes) + 1) * 14 + 8
     a('<g class="sc-dim">')
     a(f'<line x1="{wx0:.1f}" y1="{wy:.1f}" x2="{wx1:.1f}" y2="{wy:.1f}" '

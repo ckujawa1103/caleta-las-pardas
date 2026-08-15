@@ -307,3 +307,62 @@ figcaption {
 }
 .source a { color: var(--ink-dim); }
 .source a:hover { color: var(--accent); }
+
+/* --- the one atmospheric move --------------------------------------------
+   Entering the underground sections warms the page from blue-black to lamp
+   gold on warm dark, mirroring the walk down the tunnel into the club. The
+   run of underground sections is contiguous, so only its first and last
+   members carry the fade; the ones between are solid. */
+[data-depth='under'] {
+  background: linear-gradient(to bottom, #0b1f26 0, var(--ground) 220px),
+    var(--ground);
+  color: var(--ink);
+  border-top-color: var(--edge);
+}
+[data-depth='under'] + [data-depth='under'] { background: var(--ground); }
+[data-depth='under']:not(:has(+ [data-depth='under'])) {
+  background: linear-gradient(to top, #0b1f26 0, var(--ground) 220px),
+    var(--ground);
+}
+[data-depth='under'] + [data-depth='under']:not(:has(+ [data-depth='under'])) {
+  background: linear-gradient(to top, #0b1f26 0, var(--ground) 220px),
+    var(--ground);
+}
+[data-depth='under'] a { color: var(--lamp); }
+[data-depth='under'] a:hover { color: var(--ink); }
+[data-depth='under'] .datum { color: var(--lamp); }
+[data-depth='under'] tr.total td { border-top-color: var(--lamp); }
+[data-depth='under'] .thesis { border-left-color: var(--lamp); }
+[data-depth='under'] ::selection { background: var(--lamp); color: #17100b; }
+
+/* --- contents: the datum rail, used as navigation ------------------------- */
+.contents { padding-block: var(--step); border-top: 1px solid var(--edge); }
+.contents ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: 0;
+  border-top: 1px solid var(--rule-soft);
+}
+.contents li { margin: 0; border-bottom: 1px solid var(--rule-soft); }
+.contents a {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr;
+  gap: 0.8rem;
+  align-items: baseline;
+  padding: 0.7rem 0.4rem;
+  text-decoration: none;
+  color: var(--ink);
+}
+.contents a:hover { background: color-mix(in srgb, var(--shelf) 55%, transparent); }
+.contents .c-datum {
+  font-family: var(--tech);
+  font-size: 0.72rem;
+  color: var(--reef);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+.contents a[data-under] .c-datum { color: var(--lamp); }
+.contents .c-name { font-size: var(--t-0); }
