@@ -401,7 +401,8 @@ def main():
         a(f'<line x1="{xx:.1f}" y1="{wy-4:.1f}" x2="{xx:.1f}" y2="{wy+4:.1f}" '
           f'stroke="#e0a857" stroke-width="0.8" opacity="0.7"/>')
     a(f'<text class="sc-dim-t" x="{(wx0+wx1)/2:.1f}" y="{wy+14:.1f}" '
-      f'text-anchor="middle">200 ft — library bookcase to the lanes</text>')
+      f'text-anchor="middle">{(267-131)*3.281:.0f} ft — library bookcase to '
+      f'the lanes</text>')
     a('</g>')
 
     # --- surface structures, labels laddered above --------------------------
