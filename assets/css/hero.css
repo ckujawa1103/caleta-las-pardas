@@ -54,12 +54,11 @@
 
 .hero-facts {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
   gap: 1.1rem 2rem;
   margin: 0;
   padding-top: 1.4rem;
   border-top: 1px solid var(--edge);
-  max-width: var(--measure);
 }
 .hero-facts div { margin: 0; }
 .hero-facts dt {
