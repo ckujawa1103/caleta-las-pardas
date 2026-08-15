@@ -213,8 +213,38 @@ broadsheet hairline-rule newspaper columns.
 | 1 — Repo, tokens, typography, one section | Done |
 | 2 — The full document | Done — 22 sections |
 | 3 — The interactive section cut | Done — 20 interactive elements, generated from real data |
-| 4 — The 3D walkthrough | **See `walkthrough.html` and the note below** |
+| 4 — The 3D walkthrough | Built — `walkthrough.html`. Rough in places; see below. |
 | 5 — Polish: performance, mobile, a11y, reduced motion, self-critique | Not started |
+
+### The walkthrough, as built
+
+`walkthrough.html` + `assets/js/walkthrough.js`. Guided tour by default, free
+walk available, touch-first, no pointer lock, quality toggle, and deep links:
+`#terrace`, `#library`, `#descent`, `#gallery`, `#still`, `#club`, `#games`.
+The terrain is displaced from the same `section-profile.json` the drawing uses,
+so the ground you walk is the surveyed ground.
+
+Four bugs are already fixed and worth not reintroducing: Three's default camera
+forward is **−Z**, not +X, so yaw of 0 looks down −Z; interior surfaces need
+`side: THREE.DoubleSide` or they vanish from inside; gallery segments must be
+**tilted to the local grade** rather than built level and stacked, or the floor
+slabs ahead rise into the sightline; and point-light intensity is in physical
+units since r155, so room lighting wants values in the tens, not around 1.
+
+Still rough, in rough order of payoff:
+
+- **The house is a massing block.** No library interior, and the bookcase
+  prompt is a button rather than a visible bookcase that swings. Route stop 5
+  (`gate: true`) is where that belongs.
+- **The club reveal is off-axis.** Arrival yaw is set per-stop now, but the
+  lanes sit at the left edge rather than centred down the view. Tune
+  `ROUTE[8].yaw` and the entry station.
+- **No side passages** branch off the gallery yet — the spec calls for
+  labelled branches to the casita, the shelter and the sally port.
+- **The range, shelter, clinic and armory** are not modelled at all.
+- **Untested on real hardware.** Every render here came from software
+  rasterization in headless Chromium; frame rate on an actual mid-range phone
+  is unknown, and the low-quality path has never been exercised.
 
 ### Known gaps and next steps
 
